@@ -47,7 +47,7 @@ st.markdown(
     """
     <style>
         .main-container {display: flex; justify-content: center; align-items: center; flex-direction: column;}
-        .image-container {display: flex; justify-content: center;align-items: center;width: 100%;}
+        .image-container {display: flex; justify-content: center;align-items: center;width: 100%;max-height: 400px; overflow: hidden;}
         .stButton>button {border-radius: 10px; background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; cursor: pointer;}
         .stButton>button:hover {background-color: #45a049; cursor: pointer;}
         @keyframes blink {50% {opacity: 0.5;}}
@@ -65,8 +65,14 @@ img = Image.open("potato_AI.jpg")
 
 # Resize the image (set width to 600px while maintaining aspect ratio)
 
-st.image(img, use_container_width=True)
-st.markdown("</div>", unsafe_allow_html=True)
+try:
+    img = Image.open("potato_AI.jpg")
+    img = img.resize((800, 400))  # Resize with fixed width & height
+    st.image(img, use_container_width=True)
+except Exception as e:
+    st.warning(f"Error loading image: {e}")
+
+
 
 # Home Page
 if app_mode == "Home":
