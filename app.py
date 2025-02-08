@@ -40,29 +40,33 @@ st.set_page_config(page_title="Potato Plant Disease Detection", layout="wide")
 # Sidebar Navigation
 st.sidebar.title("🌿 Potato Plant Disease System for Sustainable Agriculture")
 
-
 app_mode = st.sidebar.selectbox("🔎 Select Page", ["Home", "Disease Recognition"])
 
 # CSS for styling
 st.markdown(
     """
     <style>
-        .main {text-align: center;}
+        .main-container {display: flex; justify-content: center; align-items: center; flex-direction: column;}
+        .image-container {display: flex; justify-content: center;align-items: center;width: 100%;}
         .stButton>button {border-radius: 10px; background-color: #4CAF50; color: white; font-size: 18px; padding: 10px; border: none; cursor: pointer;}
         .stButton>button:hover {background-color: #45a049; cursor: pointer;}
         @keyframes blink {50% {opacity: 0.5;}}
-        .running-text {font-size: 20px; color: red; animation: blink 1.5s infinite;}
+        .running-text {font-size: 20px; color: red; animation: blink 1.5s infinite; text-align: center;}
     </style>
     """,
     unsafe_allow_html=True,
 )
-# Display project image
+
+st.markdown("<div class='main-container'>", unsafe_allow_html=True)
+
+# Display the image centered
+st.markdown("<div class='image-container'>", unsafe_allow_html=True)
 img = Image.open("potato_AI.jpg")
 
 # Resize the image (set width to 600px while maintaining aspect ratio)
-img = img.resize((600, int(600 * img.height / img.width)))
 
-st.image(img, use_container_width=False)
+st.image(img, use_container_width=True)
+st.markdown("</div>", unsafe_allow_html=True)
 
 # Home Page
 if app_mode == "Home":
@@ -70,16 +74,19 @@ if app_mode == "Home":
     st.markdown("<h3 style='text-align: center;'>A Sustainable Approach to Smart Agriculture</h3>", unsafe_allow_html=True)
     
     st.markdown("""
-        <ul style='font-size:18px;'>
-            <li>Detects Potato plant diseases using AI models.</li>
-            <li>Helps farmers take early preventive measures.</li>
-            <li>Improves crop health and agricultural yield.</li>
-        </ul>
-        <p class='running-text'><b>🔍 Detect diseases quickly & save your potato plant! 🚀</b></p>
+        <div class='main-container'>
+            <ul style='font-size:18px;'>
+                <li>Detects Potato plant diseases using AI models.</li>
+                <li>Helps farmers take early preventive measures.</li>
+                <li>Improves crop health and agricultural yield.</li>
+            </ul>
+            <p class='running-text'><b>🔍 Detect diseases quickly & save your potato plant! 🚀</b></p>
+        </div>
     """, unsafe_allow_html=True)
 
 # Disease Recognition Page
 elif app_mode == "Disease Recognition":
+    st.markdown("<div class='main-container'>", unsafe_allow_html=True)
     st.header("🌱 Potato Plant Disease Detection System")
     
     # File uploader
@@ -103,3 +110,5 @@ elif app_mode == "Disease Recognition":
                 st.snow()
         else:
             st.warning("Please upload an image first.")
+    
+st.markdown("</div>", unsafe_allow_html=True)
