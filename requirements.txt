@@ -1,5 +1,4 @@
 streamlit
-pillow==9.5.0
 numpy
 pandas
 matplotlib
@@ -17,5 +16,4 @@ markdown-it-py
 mdurl
 pygments
 rich
-
-
+pillow==9.5.0
