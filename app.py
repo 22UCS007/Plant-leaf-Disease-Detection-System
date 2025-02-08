@@ -58,7 +58,11 @@ st.markdown(
 )
 # Display project image
 img = Image.open("potato_AI.jpg")
-st.image(img, use_container_width=True)
+
+# Resize the image (set width to 600px while maintaining aspect ratio)
+img = img.resize((600, int(600 * img.height / img.width)))
+
+st.image(img, use_container_width=False)
 
 # Home Page
 if app_mode == "Home":
