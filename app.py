@@ -67,7 +67,7 @@ img = Image.open("potato_AI.jpg")
 
 try:
     img = Image.open("potato_AI.jpg")
-    img = img.resize((800, 400))  # Resize with fixed width & height
+    img = img.resize((800, 200))  # Resize with fixed width & height
     st.image(img, use_container_width=True)
 except Exception as e:
     st.warning(f"Error loading image: {e}")
