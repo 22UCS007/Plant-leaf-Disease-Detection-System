@@ -10,17 +10,17 @@ from PIL import Image
 st.set_page_config(page_title="Potato Plant Disease Detection", layout="wide")
 
 # === Google Drive Model File ID ===
-# GOOGLE_DRIVE_FILE_ID = "1wLcoL20u9BKG72bcSrUMCuI4fHu3CF3l"
+GOOGLE_DRIVE_FILE_ID = "1wLcoL20u9BKG72bcSrUMCuI4fHu3CF3l" 
 MODEL_PATH = "trained_plant_disease_model.keras"
 
 # ✅ Download model only if not exists
-# def download_model():
-#     if not os.path.exists(MODEL_PATH):
-#         with st.spinner("🔽 Downloading AI model... Please wait."):
-#             gdown.download(f"https://drive.google.com/uc?id={GOOGLE_DRIVE_FILE_ID}", MODEL_PATH, quiet=False)
-#         st.success("✅ Model downloaded successfully!")
+def download_model():
+    if not os.path.exists(MODEL_PATH):
+        with st.spinner("🔽 Downloading AI model... Please wait."):
+            gdown.download(f"https://drive.google.com/uc?id={GOOGLE_DRIVE_FILE_ID}", MODEL_PATH, quiet=False)
+        st.success("✅ Model downloaded successfully!")
 
-# download_model()
+download_model()
 
 # ✅ Cache the loaded model for performance
 @st.cache_resource
