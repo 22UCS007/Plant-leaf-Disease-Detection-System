@@ -18,7 +18,7 @@ def download_model():
     if not os.path.exists(MODEL_PATH):
         with st.spinner("🔽 Downloading AI model... Please wait."):
             gdown.download(f"https://drive.google.com/uc?id={GOOGLE_DRIVE_FILE_ID}", MODEL_PATH, quiet=False)
-        st.success("✅ Model downloaded successfully!")
+        # st.success("✅ Model downloaded successfully!")
 
 download_model()
 
